@@ -1,5 +1,4 @@
 import React from 'react';
-import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
@@ -11,8 +10,11 @@ import {
   useColorModeValue,
   useColorMode,
   useDisclosure,
+  Image,
 } from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import CartWidget from './CartWidget';
+import logo from '../assets/Logo.png';
 
 const Links = [
   'Inicio',
@@ -31,7 +33,6 @@ const NavLink = ({ children }) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    href={'/' + children.toLowerCase()}
   >
     {children}
   </Link>
@@ -53,7 +54,14 @@ const NavBar = () => {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box>DiShop</Box>
+            <Image
+              src={logo}
+              _hover={{
+                transform: 'scale(1.1)',
+                cursor: 'pointer',
+              }}
+              width={100}
+            />
             <HStack
               as={'nav'}
               spacing={4}
