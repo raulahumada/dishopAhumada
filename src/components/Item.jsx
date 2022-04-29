@@ -12,7 +12,7 @@ import {
 
 const Item = ({ product }) => {
   return (
-    <Flex alignItems="center" justifyContent="center">
+    <Flex py={10} alignItems="center" justifyContent="center">
       <Box
         bg={useColorModeValue('white', 'gray.800')}
         rounded="lg"
