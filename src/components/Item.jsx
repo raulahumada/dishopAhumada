@@ -14,7 +14,6 @@ const Item = ({ product }) => {
   return (
     <Flex alignItems="center" justifyContent="center">
       <Box
-        margin={'50px'}
         bg={useColorModeValue('white', 'gray.800')}
         rounded="lg"
         maxH={'sm'}
