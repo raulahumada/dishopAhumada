@@ -12,27 +12,37 @@ import {
 
 const Item = ({ product }) => {
   return (
-    <Flex py={10} alignItems="center" justifyContent="center">
+    <Flex alignItems="center" justifyContent="center">
       <Box
+        margin={'50px'}
         bg={useColorModeValue('white', 'gray.800')}
-        borderWidth="1px"
         rounded="lg"
+        maxH={'sm'}
         maxW={'sm'}
         shadow="lg"
         position="relative"
+        backgroundColor={'white'}
       >
-        <Image
-          minW={'sm'}
-          src={product.pictureURL}
-          alt={`Picture of ${product.title} `}
-          roundedTop="lg"
-        />
-
+        <Center>
+          <Image
+            borderRadius={'lg'}
+            maxH={'sm'}
+            maxW={'sm'}
+            src={product.pictureURL}
+            alt={`Picture of ${product.title} `}
+            roundedTop="lg"
+          />
+        </Center>
         <Box p="6">
           <Box d="flex" alignItems="baseline">
             {product.isNew && (
-              <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
+              <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="green">
                 Nuevo
+              </Badge>
+            )}
+            {!product.isNew && (
+              <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
+                Usado
               </Badge>
             )}
           </Box>
