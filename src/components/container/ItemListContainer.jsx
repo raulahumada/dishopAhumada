@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import ItemList from '../ItemList';
-import { productsInfo as productsData } from '../../products';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
+import { Box, Center } from '@chakra-ui/react';
+import { productsInfo as productsData } from '../../products';
+import ItemList from '../ItemList';
+import lottie from 'lottie-web';
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  console.log('CategoryId: ', id);
+
+  const container = useRef(null);
 
   useEffect(() => {
     const getDataProducts = new Promise((resolve, reject) => {
@@ -26,10 +29,26 @@ const ItemListContainer = () => {
     });
   }, []);
 
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: container.current,
+      loop: true,
+      autoplay: true,
+      animationData: require('../../assets/loading.json'),
+    });
+  }, []);
+
   return (
     <>
-      {loading && <p>Cargando...</p>}
-      <ItemList products={products} />
+      {loading ? (
+        <Center>
+          <Box>
+            <div ref={container}></div>
+          </Box>
+        </Center>
+      ) : (
+        <ItemList products={products} />
+      )}
     </>
   );
 };
