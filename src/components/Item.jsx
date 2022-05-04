@@ -9,6 +9,7 @@ import {
   Button,
   Center,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 const Item = ({ product }) => {
   return (
@@ -71,22 +72,22 @@ const Item = ({ product }) => {
           </Flex>
           <Box>
             <Center>
-              <Button
-                mt={10}
-                w={'full'}
-                bg={'cyan.400'}
-                color={'white'}
-                rounded={'xl'}
-                boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
-                _hover={{
-                  bg: 'cyan.500',
-                }}
-                _focus={{
-                  bg: 'cyan.500',
-                }}
-              >
-                Ver Detalle
-              </Button>
+              <Link to={`/item/${product.id}`}>
+                <Button
+                  bg={'cyan.400'}
+                  color={'white'}
+                  rounded={'xl'}
+                  boxShadow={'0 5px 20px 0px rgb(72 187 120 / 43%)'}
+                  _hover={{
+                    bg: 'cyan.500',
+                  }}
+                  _focus={{
+                    bg: 'cyan.500',
+                  }}
+                >
+                  VER DETALLE
+                </Button>
+              </Link>
             </Center>
           </Box>
         </Box>

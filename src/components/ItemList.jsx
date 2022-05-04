@@ -6,11 +6,10 @@ const ItemList = (data) => {
   console.log(data);
   return (
     <>
-      <Flex direction="column" justifyContent="center" m="0 auto" minH="100vh">
+      <Flex direction="column" justifyContent="center" m="0 auto">
         <Grid
           w="full"
           gridGap="4"
-          templateRows="repeat(6, 1fr)"
           templateColumns="repeat(4, 1fr)"
           gridTemplateColumns="repeat( auto-fit, minmax(300px, 1fr) )"
           gap={4}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as LinkRouter } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -17,15 +18,28 @@ import CartWidget from './CartWidget';
 import logo from '../assets/Logo.png';
 
 const Links = [
-  'Inicio',
-  'Celulares',
-  'Electrodomesticos',
-  'Computadoras',
-  'Accesorios',
+  { name: 'Inicio', path: '/' },
+  {
+    name: 'Celulares',
+    path: '/category/1',
+  },
+  {
+    name: 'Electrodomesticos',
+    path: '/category/2',
+  },
+  {
+    name: 'Computadoras',
+    path: '/category/3',
+  },
+  {
+    name: 'Accesorios',
+    path: '/category/4',
+  },
 ];
 
 const NavLink = ({ children }) => (
   <Link
+    as={LinkRouter}
     px={2}
     py={1}
     rounded={'md'}
@@ -33,8 +47,9 @@ const NavLink = ({ children }) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
+    to={children.path}
   >
-    {children}
+    {children.name}
   </Link>
 );
 
@@ -54,21 +69,23 @@ const NavBar = () => {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Image
-              src={logo}
-              _hover={{
-                transform: 'scale(1.1)',
-                cursor: 'pointer',
-              }}
-              width={100}
-            />
+            <Link href="/">
+              <Image
+                src={logo}
+                _hover={{
+                  transform: 'scale(1.1)',
+                  cursor: 'pointer',
+                }}
+                width={100}
+              />
+            </Link>
             <HStack
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}
             >
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link.name}>{link}</NavLink>
               ))}
             </HStack>
           </HStack>
@@ -83,7 +100,7 @@ const NavBar = () => {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              {Links.map((link) => (
+              {Links.map((link, index) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
             </Stack>
