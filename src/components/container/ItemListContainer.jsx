@@ -15,7 +15,6 @@ const ItemListContainer = () => {
   useEffect(() => {
     const getDataProducts = new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log('Nuevo');
         resolve(productsData);
       }, 2000);
     });
@@ -27,7 +26,7 @@ const ItemListContainer = () => {
       setLoading(false);
       alert(ex.message);
     });
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     lottie.loadAnimation({

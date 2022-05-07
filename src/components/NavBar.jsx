@@ -21,19 +21,19 @@ const Links = [
   { name: 'Inicio', path: '/' },
   {
     name: 'Celulares',
-    path: '/category/1',
+    path: '/category/celulares',
   },
   {
     name: 'Electrodomesticos',
-    path: '/category/2',
+    path: '/category/electrodomesticos',
   },
   {
     name: 'Computadoras',
-    path: '/category/3',
+    path: '/category/computadoras',
   },
   {
     name: 'Accesorios',
-    path: '/category/4',
+    path: '/category/accesorios',
   },
 ];
 
