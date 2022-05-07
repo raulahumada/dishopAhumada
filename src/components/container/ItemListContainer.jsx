@@ -18,14 +18,21 @@ const ItemListContainer = () => {
         resolve(productsData);
       }, 2000);
     });
-    getDataProducts.then((result) => {
-      setLoading(false);
-      setProducts(result);
-    });
-    getDataProducts.catch((ex) => {
-      setLoading(false);
-      alert(ex.message);
-    });
+    getDataProducts
+      .then((result) => {
+        if (id != undefined) {
+          console.log(id);
+          result = result.filter(
+            (item) => item.category.toLowerCase() === id.toLowerCase()
+          );
+        }
+        setLoading(false);
+        setProducts(result);
+      })
+      .catch((ex) => {
+        setLoading(false);
+        alert(ex.message);
+      });
   }, [id]);
 
   useEffect(() => {
