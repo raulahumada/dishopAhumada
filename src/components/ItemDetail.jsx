@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Container,
@@ -14,8 +14,16 @@ import {
   useColorModeValue,
   Badge,
 } from '@chakra-ui/react';
+import ItemCount from './ItemCount';
+import { Link } from 'react-router-dom';
 
 const ItemDetail = ({ item }) => {
+  const [terminar, setTerminar] = useState(false);
+
+  const onAdd = (count) => {
+    setTerminar(true);
+    console.log(count);
+  };
   return (
     <>
       <Container maxW={'7xl'}>
@@ -88,26 +96,29 @@ const ItemDetail = ({ item }) => {
                 </Text>
               </VStack>
             </Stack>
-
-            <Button
-              rounded={'none'}
-              w={'full'}
-              mt={8}
-              size={'lg'}
-              py={'7'}
-              bg={useColorModeValue('gray.900', 'gray.50')}
-              color={useColorModeValue('white', 'gray.900')}
-              textTransform={'uppercase'}
-              onClick={() => {
-                alert('Esta funcionalidad no esta disponible aún');
-              }}
-              _hover={{
-                transform: 'translateY(2px)',
-                boxShadow: 'lg',
-              }}
-            >
-              AÑADIR AL CARRITO
-            </Button>
+            {terminar ? (
+              <>
+                <Link to="/cart">
+                  <Button
+                    rounded={'none'}
+                    w={'full'}
+                    mt={8}
+                    size={'md'}
+                    py={'7'}
+                    textTransform={'uppercase'}
+                    _hover={{
+                      transform: 'translateY(2px)',
+                      boxShadow: 'lg',
+                    }}
+                  >
+                    Terminar Compra
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              // </Link>
+              <ItemCount stock={item.quantity} onAdd={onAdd} id={item.id} />
+            )}
           </Stack>
         </SimpleGrid>
       </Container>

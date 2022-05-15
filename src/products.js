@@ -8,6 +8,7 @@ export const productsInfo = [
     description: 'Iphone con Camara de 12MP y una pantalla de 6.1 pulgadas.',
     price: 138500,
     category: 'Celulares',
+    quantity: 10,
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ export const productsInfo = [
     pictureURL:
       'https://http2.mlstatic.com/D_NQ_NP_852497-MLA32566609369_102019-O.webp',
     category: 'Electrodomesticos',
+    quantity: 12,
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ export const productsInfo = [
     pictureURL:
       'https://http2.mlstatic.com/D_NQ_NP_700361-MLA48242559784_112021-O.webp',
     category: 'Accesorios',
+    quantity: 13,
   },
   {
     id: 4,
@@ -39,5 +42,6 @@ export const productsInfo = [
     pictureURL:
       'https://http2.mlstatic.com/D_NQ_NP_735538-MLA43269505273_082020-O.webp',
     category: 'Accesorios',
+    quantity: 15,
   },
 ];
