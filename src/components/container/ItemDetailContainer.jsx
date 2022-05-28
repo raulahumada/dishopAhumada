@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { productsInfo as productsData } from '../../products';
 import ItemDetail from '../ItemDetail';
 import lottie from 'lottie-web';
 import { Box, Center } from '@chakra-ui/react';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -12,13 +12,7 @@ const ItemDetailContainer = () => {
   const container = useRef(null);
 
   useEffect(() => {
-    (async () => {
-      const productInfo = await getDataProducts();
-      if (productInfo) {
-        setLoading(false);
-        setProduct(productInfo);
-      }
-    })();
+    getDataProducts();
   }, []);
 
   useEffect(() => {
@@ -31,10 +25,14 @@ const ItemDetailContainer = () => {
   }, []);
 
   const getDataProducts = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(productsData.find((item) => item.id == id));
-      }, 1000);
+    const db = getFirestore();
+    const productDoc = doc(db, 'items', id);
+    getDoc(productDoc).then((result) => {
+      console.log(result);
+      if (result.exists()) {
+        setProduct({ id: result.id, ...result.data() });
+        setLoading(false);
+      }
     });
   };
 

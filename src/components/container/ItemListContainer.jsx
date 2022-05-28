@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Center } from '@chakra-ui/react';
-import { productsInfo as productsData } from '../../products';
 import ItemList from '../ItemList';
 import lottie from 'lottie-web';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -13,27 +13,41 @@ const ItemListContainer = () => {
   const container = useRef(null);
 
   useEffect(() => {
-    const getDataProducts = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(productsData);
-      }, 2000);
-    });
-    getDataProducts
-      .then((result) => {
-        if (id != undefined) {
-          console.log(id);
-          result = result.filter(
-            (item) => item.category.toLowerCase() === id.toLowerCase()
-          );
-        }
-        setLoading(false);
-        setProducts(result);
-      })
-      .catch((ex) => {
-        setLoading(false);
-        alert(ex.message);
-      });
+    getDataProducts();
   }, [id]);
+
+  const getDataProducts = () => {
+    setLoading(true);
+    const db = getFirestore();
+    const productCollections = collection(db, 'items');
+    getDocs(productCollections).then((snapshot) => {
+      if (snapshot.size > 0) {
+        console.log(snapshot.docs);
+        console.log(id);
+        if (id != undefined) {
+          const productsData = snapshot.docs
+            .filter(
+              (item) => item.data().category.toLowerCase() === id.toLowerCase()
+            )
+            .map((d) => ({
+              id: d.id,
+              ...d.data(),
+            }));
+
+          setProducts(productsData);
+          setLoading(false);
+        } else {
+          const productData = snapshot.docs.map((d) => ({
+            id: d.id,
+            ...d.data(),
+          }));
+          console.log(productData);
+          setProducts(productData);
+          setLoading(false);
+        }
+      }
+    });
+  };
 
   useEffect(() => {
     lottie.loadAnimation({
