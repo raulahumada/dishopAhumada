@@ -1,10 +1,9 @@
-import { Flex, Grid } from '@chakra-ui/react';
+import { Center, Flex, Grid, Text } from '@chakra-ui/react';
 import React from 'react';
 import Item from './Item';
 
 const ItemList = (data) => {
-  console.log(data);
-  return (
+  return data.products && data.products.length > 0 ? (
     <>
       <Flex direction="column" justifyContent="center" m="0 auto">
         <Grid
@@ -20,6 +19,10 @@ const ItemList = (data) => {
         </Grid>
       </Flex>
     </>
+  ) : (
+    <Center py={'5%'}>
+      <Text fontSize={'4xl'}>No hay productos de esta categoria 😔</Text>
+    </Center>
   );
 };
 

@@ -4,6 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
+import { initializeApp } from 'firebase/app';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyC-b4ncbZ0gtmluIbg25G-YQvR25XVOBnQ',
+  authDomain: 'dishop-ahumad.firebaseapp.com',
+  projectId: 'dishop-ahumad',
+  storageBucket: 'dishop-ahumad.appspot.com',
+  messagingSenderId: '531559097180',
+  appId: '1:531559097180:web:cde3fd1d65cfcae8541799',
+};
+
+const app = initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <ChakraProvider>

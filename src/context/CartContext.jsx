@@ -18,17 +18,35 @@ export const CartContextProvider = (children) => {
       setCart(newCart);
       return;
     }
-    item.quantity = amount;
+    item.quantity = item.quantity - amount;
+    item.quantityOrder = amount;
     setCart([...newCart, item]);
+    calculateTotalPrice();
   };
 
-  const removeItem = (id) => setCart(cart.filter((item) => item.id !== id));
+  const removeItem = (id) => {
+    const newCart = cart.filter((item) => item.id != id);
+    setCart(newCart);
+  };
   const isInCart = (id) => cart.find((item) => item.id === id);
   const clearCart = () => setCart([]);
-
+  const calculateTotalPrice = () => {
+    var total = 0;
+    cart.forEach(function (item) {
+      total += item.price * item.quantityOrder;
+    });
+    return total;
+  };
   return (
     <CartContext.Provider
-      value={{ cart, setCart, addToCart, removeItem, clearCart }}
+      value={{
+        cart,
+        setCart,
+        addToCart,
+        removeItem,
+        clearCart,
+        calculateTotalPrice,
+      }}
       {...children}
     ></CartContext.Provider>
   );

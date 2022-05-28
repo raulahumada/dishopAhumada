@@ -18,6 +18,7 @@ import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
 
 const ItemDetail = ({ item }) => {
+  console.log(item);
   const [terminar, setTerminar] = useState(false);
 
   const onAdd = (count) => {
@@ -69,9 +70,9 @@ const ItemDetail = ({ item }) => {
                 </Badge>
               )}
               <Text
-                color={useColorModeValue('gray.900', 'gray.400')}
-                fontWeight={300}
-                fontSize={'2xl'}
+                color={useColorModeValue('white.900', 'white.400')}
+                fontWeight={'bold'}
+                fontSize={'4xl'}
               >
                 ${item.price} ARS
               </Text>

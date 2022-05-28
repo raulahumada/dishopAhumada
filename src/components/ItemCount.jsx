@@ -1,15 +1,14 @@
 import { Button, Stack, Text } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
 import { useCartContext } from '../context/CartContext';
-import { productsInfo as products } from '../products';
 
 const ItemCount = ({ stock, onAdd, id }) => {
-  console.log(stock, onAdd, id);
+  const [products, setProducts] = useState([]);
+  console.log(stock);
   const [count, setCount] = useState(0);
 
   const { addToCart } = useCartContext();
-
-  console.log(addToCart);
 
   const handleAdd = () => {
     if (count < stock) {
@@ -20,6 +19,27 @@ const ItemCount = ({ stock, onAdd, id }) => {
     if (count > 0) {
       setCount(count - 1);
     }
+  };
+  useEffect(() => {
+    getDataProducts();
+  }, []);
+
+  const getDataProducts = () => {
+    const db = getFirestore();
+    const productCollections = collection(db, 'items');
+    getDocs(productCollections).then((snapshot) => {
+      if (snapshot.size > 0) {
+        console.log(snapshot.docs);
+        console.log(id);
+
+        const productData = snapshot.docs.map((d) => ({
+          id: d.id,
+          ...d.data(),
+        }));
+        console.log(productData);
+        setProducts(productData);
+      }
+    });
   };
 
   const handleClick = (id, cantidad) => {
@@ -36,7 +56,7 @@ const ItemCount = ({ stock, onAdd, id }) => {
     onAdd(count);
   };
 
-  return (
+  return stock > 0 ? (
     <>
       <div className="flex gap-4 mt-4">
         <Stack direction="row" spacing={4}>
@@ -72,6 +92,15 @@ const ItemCount = ({ stock, onAdd, id }) => {
         </div>
       </div>
     </>
+  ) : (
+    <Text
+      fontSize={'2xl'}
+      fontWeight="bold"
+      color="red.500"
+      textTransform={'uppercase'}
+    >
+      No hay stock de este producto ⛔
+    </Text>
   );
 };
 
