@@ -1,14 +1,11 @@
 import React, { createContext, useState, useContext } from 'react';
 
 export const CartContext = createContext({});
-
 export const useCartContext = () => useContext(CartContext);
-
 export const CartContextProvider = (children) => {
   const [cart, setCart] = useState([]);
 
   const addToCart = (item, amount) => {
-    console.log(item, amount);
     const newCart = [...cart];
     const productoIsInCart = isInCart(item.id);
     if (productoIsInCart) {
