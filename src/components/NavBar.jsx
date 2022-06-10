@@ -48,6 +48,8 @@ const NavLink = ({ children }) => (
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
     to={children.path}
+    textTransform="uppercase"
+    fontWeight={'bold'}
   >
     {children.name}
   </Link>
@@ -69,7 +71,15 @@ const NavBar = () => {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Link href="/">
+            <Link
+              href="/"
+              _active={{
+                outline: 'none',
+              }}
+              _focus={{
+                outline: 'none',
+              }}
+            >
               <Image
                 src={logo}
                 _hover={{

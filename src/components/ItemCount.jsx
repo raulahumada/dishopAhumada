@@ -2,6 +2,7 @@ import { Button, Stack, Text } from '@chakra-ui/react';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useCartContext } from '../context/CartContext';
+import { IoAddCircleOutline, IoRemoveCircleOutline } from 'react-icons/io5';
 
 const ItemCount = ({ stock, onAdd, id }) => {
   const [products, setProducts] = useState([]);
@@ -60,17 +61,28 @@ const ItemCount = ({ stock, onAdd, id }) => {
     <>
       <div className="flex gap-4 mt-4">
         <Stack direction="row" spacing={4}>
-          <Button onClick={handleRemove} colorScheme="blue" variant="solid">
-            Disminuir
+          <Button
+            onClick={handleRemove}
+            rightIcon={<IoRemoveCircleOutline />}
+            colorScheme="blue"
+            variant="solid"
+            fontSize={'xl'}
+          >
+            REMOVER
           </Button>
-          <Text> Cantidad: {count}</Text>
+          <Text fontWeight={'bold'} fontSize={'2xl'} marginBottom={'10'}>
+            {'CANTIDAD: '}
+            {count}
+          </Text>
           <Button
             onClick={handleAdd}
             marginLeft="2"
             colorScheme="blue"
             variant="solid"
+            rightIcon={<IoAddCircleOutline />}
+            fontSize={'xl'}
           >
-            Agregar
+            AGREGAR
           </Button>
         </Stack>
 

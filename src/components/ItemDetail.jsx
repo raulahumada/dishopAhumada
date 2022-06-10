@@ -51,24 +51,25 @@ const ItemDetail = ({ item }) => {
                 fontWeight={600}
                 fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}
               >
-                {item.title}
+                {item.title}{' '}
+                {item.isNew && (
+                  <Badge
+                    my={10}
+                    rounded="full"
+                    px="2"
+                    fontSize="2xl"
+                    colorScheme="green"
+                  >
+                    Nuevo
+                  </Badge>
+                )}
+                {!item.isNew && (
+                  <Badge rounded="full" px="2" fontSize="2xl" colorScheme="red">
+                    Usado
+                  </Badge>
+                )}
               </Heading>
-              {item.isNew && (
-                <Badge
-                  my={10}
-                  rounded="full"
-                  px="2"
-                  fontSize="2xl"
-                  colorScheme="green"
-                >
-                  Nuevo
-                </Badge>
-              )}
-              {!item.isNew && (
-                <Badge rounded="full" px="2" fontSize="2xl" colorScheme="red">
-                  Usado
-                </Badge>
-              )}
+
               <Text
                 color={useColorModeValue('white.900', 'white.400')}
                 fontWeight={'bold'}
