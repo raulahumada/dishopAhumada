@@ -11,6 +11,7 @@ import ItemDetailContainer from './components/container/ItemDetailContainer';
 import CartContextProvider from './context/CartContext';
 import Cart from './components/Cart';
 import NotFound from './components/NotFound';
+import Order from './components/Order';
 
 function App() {
   return (
@@ -20,9 +21,10 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
-            <Route path="category/:id" element={<ItemListContainer />} />
-            <Route path="item/:id" element={<ItemDetailContainer />} />
-            <Route path="cart" element={<Cart />} />
+            <Route path="/category/:id" element={<ItemListContainer />} />
+            <Route path="/item/:id" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/order" element={<Order />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

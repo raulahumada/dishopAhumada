@@ -55,6 +55,22 @@ const Cart = () => {
         <Center>
           <Text fontWeight={'bold'} fontSize={'4xl'}>
             El precio total es: ${calculateTotalPrice()} ARS ✅
+            <Link to="/order">
+              <Button
+                rounded={'none'}
+                w={'full'}
+                mt={8}
+                size={'md'}
+                py={'7'}
+                textTransform={'uppercase'}
+                _hover={{
+                  transform: 'translateY(2px)',
+                  boxShadow: 'lg',
+                }}
+              >
+                Generar Orden ✅
+              </Button>
+            </Link>
           </Text>
         </Center>
       </Box>
