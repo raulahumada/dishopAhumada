@@ -18,3 +18,9 @@ El enfoque que utilice es poder vender desde la aplicación web usando la tecnol
 Se entrego todo el proyecto con firebase incluido, se entrega tambien el gif que demuestra las pantallas y la aplicacion!
 
 Se utilizo firebase para persisitir los datos
+
+#![captura1](https://user-images.githubusercontent.com/41402094/173483953-6b58c4d8-3b18-4222-aa9d-d91be291f0d6.png)
+![capturas 5](https://user-images.githubusercontent.com/41402094/173483977-58fe7d1c-4ed3-4ee1-935e-70de049bf43b.png)
+![capturas 4](https://user-images.githubusercontent.com/41402094/173483979-33148e0c-af7c-4433-9238-f88316a904f9.png)
+![capturas 3](https://user-images.githubusercontent.com/41402094/173483980-2d51399f-58e4-4305-9ca8-fb20eb3f19e1.png)
+![capturas2](https://user-images.githubusercontent.com/41402094/173483981-33603e52-ca3d-4738-bc01-942f756c57ed.png)
