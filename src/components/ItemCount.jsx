@@ -6,7 +6,6 @@ import { IoAddCircleOutline, IoRemoveCircleOutline } from 'react-icons/io5';
 
 const ItemCount = ({ stock, onAdd, id }) => {
   const [products, setProducts] = useState([]);
-  console.log(stock);
   const [count, setCount] = useState(0);
 
   const { addToCart } = useCartContext();
@@ -30,22 +29,16 @@ const ItemCount = ({ stock, onAdd, id }) => {
     const productCollections = collection(db, 'items');
     getDocs(productCollections).then((snapshot) => {
       if (snapshot.size > 0) {
-        console.log(snapshot.docs);
-        console.log(id);
-
         const productData = snapshot.docs.map((d) => ({
           id: d.id,
           ...d.data(),
         }));
-        console.log(productData);
         setProducts(productData);
       }
     });
   };
 
   const handleClick = (id, cantidad) => {
-    console.log('1');
-
     const findProduct = products.find((producto) => producto.id === id);
 
     if (!findProduct) {

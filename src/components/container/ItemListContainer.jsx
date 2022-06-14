@@ -22,8 +22,6 @@ const ItemListContainer = () => {
     const productCollections = collection(db, 'items');
     getDocs(productCollections).then((snapshot) => {
       if (snapshot.size > 0) {
-        console.log(snapshot.docs);
-        console.log(id);
         if (id != undefined) {
           const productsData = snapshot.docs
             .filter(
@@ -41,7 +39,6 @@ const ItemListContainer = () => {
             id: d.id,
             ...d.data(),
           }));
-          console.log(productData);
           setProducts(productData);
           setLoading(false);
         }

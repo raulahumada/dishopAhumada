@@ -5,7 +5,7 @@ import Item from './Item';
 const ItemList = (data) => {
   return data.products && data.products.length > 0 ? (
     <>
-      <Flex direction="column" justifyContent="center" m="0 auto">
+      <Flex marginTop={'50'} justifyContent="center" m="0 auto">
         <Grid
           w="full"
           gridGap="4"

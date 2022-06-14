@@ -39,10 +39,8 @@ const Order = () => {
   };
 
   const createOrder = async () => {
-    console.log('hello');
     setSent(true);
     const userInfo = { name, email, phone };
-    console.log(cart);
     const items = cart.map((p) => ({
       id: p.id,
       name: p.description,
@@ -50,13 +48,10 @@ const Order = () => {
       subtotal: p.price * p.quantityOrder,
     }));
 
-    console.log(items);
     const totalPrice = cart.reduce(
       (total, product) => total + product.quantity * product.price,
       0
     );
-
-    console.log(totalPrice);
 
     const db = getFirestore();
 
@@ -66,7 +61,6 @@ const Order = () => {
       date: Date.now(),
       total: totalPrice,
     };
-    console.log(newOrder);
     try {
       const docRef = await addDoc(collection(db, 'orders'), newOrder);
 
@@ -74,7 +68,6 @@ const Order = () => {
 
       cleanCart();
     } catch (err) {
-      console.log(err);
       console.log('Ha ocurrido un error creando la orden de compra');
     }
   };

@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 
 const Item = ({ product }) => {
   return (
-    <Flex py={10} alignItems="center" justifyContent="center">
+    <Flex marginTop="200px" py={10} alignItems="center" justifyContent="center">
       <Box
         bg={useColorModeValue('white', 'gray.800')}
         rounded="lg"

@@ -18,12 +18,10 @@ import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
 
 const ItemDetail = ({ item }) => {
-  console.log(item);
   const [terminar, setTerminar] = useState(false);
 
   const onAdd = (count) => {
     setTerminar(true);
-    console.log(count);
   };
   return (
     <>

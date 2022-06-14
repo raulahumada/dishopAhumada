@@ -12,3 +12,9 @@ El enfoque que utilice es poder vender desde la aplicación web usando la tecnol
 
   [chakraui]: https://chakra-ui.com/
   [lottie-web]: https://airbnb.io/projects/lottie-web/
+
+# Proyecto final
+
+Se entrego todo el proyecto con firebase incluido, se entrega tambien el gif que demuestra las pantallas y la aplicacion!
+
+Se utilizo firebase para persisitir los datos
